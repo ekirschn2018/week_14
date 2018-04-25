@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/src/main/main.iml" filepath="$PROJECT_DIR$/src/main/main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/week_14.iml" filepath="$PROJECT_DIR$/.idea/modules/week_14.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/week_14_main.iml" filepath="$PROJECT_DIR$/.idea/modules/week_14_main.iml" group="week_14" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/week_14_test.iml" filepath="$PROJECT_DIR$/.idea/modules/week_14_test.iml" group="week_14" />
     </modules>
   </component>
 </project>

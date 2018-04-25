@@ -10,6 +10,14 @@ class Task {
     private int id, priority;
     private boolean done;
 
+    public Task(String body, String title, int id, int priority, boolean done) {
+        this.body = body;
+        this.title = title;
+        this.id = id;
+        this.priority = priority;
+        this.done = done;
+    }
+
     public String getBody(){
         return body;
     }
@@ -53,11 +61,11 @@ class Task {
     @Override
     public String toString(){
         if (done) {
-            return "The task " + title + " (id " + id + ") is " + body +
+            return "The task " + title + " (id " + id + ") " + body +
                     " with a priority of " + priority + " is done";
         }
         else {
-            return "The task " + title + " (id " + id + ") is " + body +
+            return "The task " + title + " (id " + id + ") " + body +
                     " with a priority of " + priority + " is not done";
         }
     }
@@ -82,24 +90,28 @@ public class Main {
 
     public static void save(String filename, ToDoList data) throws IOException {
         Gson gson = new Gson();
-        FileWriter writer = new FileWriter(filename);
+        String json = gson.toJson(data);
+        System.out.println(json);
+/*        FileWriter writer = new FileWriter(filename);
         try {
             gson.toJson(data, writer);
         }
         finally {
             writer.close();
-        }
+        }*/
     }
 
     public static void main(String[] args) {
 
-        String jsonData = "{\"todos\":[ { \"body\":\"Walk the dog\", \"done\":false, \"id\":0,\"priority\":3, \"title\":\"dog\" },"+
-                "{\"body\":\"Pay the bills\",\"done\":false,\"id\":1,\"priority\":1,\"title\":\"bills\"} ]}";
-        Gson gson = new Gson();
-        ToDoList todos = gson.fromJson(jsonData, ToDoList.class);
 
-        // first load from data list, print and save
+        // first load data, print and save
         try {
+
+            ToDoList todos = new ToDoList();
+            Task t1 = new Task("Walk the dog", "dog",0, 3, false);
+            todos.add(t1);
+            Task t2 = new Task("Pay the bills","bills",1, 1, false);
+            todos.add(t2);
 
             // print each forecast from the list
             for (Task t: todos) {
@@ -113,10 +125,9 @@ public class Main {
                 e.printStackTrace();
             }
         //Then read from file and print
-        try {
+/*        try {
 
             // load forecasts from file
-//            ToDoList readJobs = load(FILENAME);
             ToDoList readJobs = load(FILENAME);
 
             // print each forecast from the file
@@ -126,5 +137,6 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
     }
     }
